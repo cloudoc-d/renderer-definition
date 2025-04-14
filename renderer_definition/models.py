@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from pydantic.networks import AnyHttpUrl
 from enum import Enum
 from typing import Union, Literal
 
@@ -41,3 +42,7 @@ Element = Union[
 
 class Document(BaseModel):
     content: list[Element]
+
+
+class RenderedDocument(BaseModel):
+    url: AnyHttpUrl
