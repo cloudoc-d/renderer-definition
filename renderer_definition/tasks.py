@@ -1,7 +1,13 @@
-from celery import shared_task
+from celery import shared_task, Task
+from abc import ABC, abstractmethod
 from renderer_definition.models import Document, RenderedDocument
 
+class BaseRenderTask(Task):
+    name = 'render_pdf'
 
-@shared_task(name='render_pdf', pydantic=True)
-def render_pdf(document: Document, css: str) -> RenderedDocument:
-    raise NotImplementedError()
+    @abstractmethod
+    def run(self, document: Document, css: str) -> RenderedDocument:
+        raise NotImplementedError()
+
+
+render_pdf_task = BaseRenderTask()
