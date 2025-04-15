@@ -41,7 +41,9 @@ Element = Union[
 
 
 class Document(BaseModel):
+    name: str
     content: list[Element]
+    style: str
 
 
 class RenderedDocument(BaseModel):
