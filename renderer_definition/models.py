@@ -1,5 +1,4 @@
 from pydantic import BaseModel
-from pydantic.networks import AnyHttpUrl
 from enum import Enum
 from typing import Union, Literal
 
@@ -47,4 +46,4 @@ class Document(BaseModel):
 
 
 class RenderedDocument(BaseModel):
-    url: AnyHttpUrl
+    url: str
